@@ -1,8 +1,11 @@
 <!doctype html>
 <html>
      <head> 
-          <title>Vonnie's Electric Shop</title>
+          <title>Shervon's Electric Shop</title>
           <style>
+              h2{
+                  text-align: center;
+              }
               img{
                   width:200px;
 
@@ -11,53 +14,61 @@
               input{
                   width:20px;
               }
+
+
+          
+          
+               
           </style>
           <script>
               function purchase(){
-                  var quantity1= getdocumentElementById("quantity1");
-                  var quantity2= getdocumentElementById("quantity2");
-                  var quantity3= getdocumentElementById("quantity3");
-                  var output= getdocumentElementById("output")
+                  var quantity1= document.getElementById("quantity1");
+                  var quantity2= document.getElementById("quantity2");
+                  var quantity3= document.getElementById("quantity3");
+                  var output= document.getElementById("output");
+                  
                   var rprice1= 794.00;
                   var rprice2= 399.99;
-                  var rprice3= 179.95;
-                  var wprice1= 900.00
-                  var wprice2= 500.00
-                  var wprice = 250.00
+                  var rprice3= 400.00;
+                  var wprice1= 500.00;
+                  var wprice2= 200.00;
+                  var wprice3= 150.00;
                   var cus_subtotal= (rprice1 * parseInt(quantity1.value)) + (rprice2 * parseInt(quantity2.value)) + (rprice3 * parseInt(quantity3.value));
                   var com_subtotal= (wprice1 * parseInt(quantity1.value)) + (wprice2 * parseInt(quantity2.value)) + (wprice3 * parseInt(quantity3.value));
+                  
                   
                   var profit;
                   profit= cus_subtotal - com_subtotal;
                   console.log("Your Profit is: " + profit);
 
-                  var totalItemsSold= parseInt(quantity1.value) + parseInt(quantity2.value) + parseInt(quantity3.value);
+                  var totalItemsSold;
+                  totalItemsSold = parseInt(quantity1.value) + parseInt(quantity2.value) + parseInt(quantity3.value);
                   console.log("Total Items Sold is " + totalItemsSold);
-
-
+                  
                   var tax= cus_subtotal * 0.0875;
+                  
                   var shipping;
-                  if(cus_subtotal< 100){
+                  if(cus_subtotal<700 ){
                       shipping = 25.00
 
-                  }else if(cus_subtotal<= 100 && cus_subtotal<=200){
+                  }else if(cus_subtotal>=700&& cus_subtotal<=1000.00){
                       shipping= 10.00
 
                     
-                  }else if(cus_subtotal>200){
+                  }else if(cus_subtotal>1000.00){
                       shipping= 0.00
                   }
                   var total= cus_subtotal + tax + shipping;
 
-                  var build = "";
-                  build += "Your Receipt";
-                  build += "Subtotal: " + cus_subtotal + "<br>"
-                  build += "Tax: " + tax.toFixed(2) + "<br>"
-                  build += "Shipping Cost: " + shipping + "<br>"
+                  var build = " ";
+                  build += "Your Receipt:" + "<br>"
+                  build += "Your Subtotal: " + cus_subtotal + "<br>"
+                  build += "Your Tax: " + tax.toFixed(2) + "<br>"
+                  build += "Your Shipping Cost: " + shipping + "<br>"
                   build += "------------------------<br>";
-                  build += "Total: " + total;
+                  build += "Your Total is:  " + total;
                   
-                  output.innerHTML = build;
+                 output.innerHTML= build
 
                   
 
@@ -68,6 +79,9 @@
           </script>
     </head>
     <body>
+        <h2> Shervon's Electric Shop</h2>
+   
+        
        
         <div>
             <h1> iPhone 7 Plus (Product Red)</h1>
@@ -77,7 +91,9 @@
 
             </span>
             <p>
-               Come purchase the limited edition RED iPhone 7 Plus before time runs out!<br> With this purchase includes EarPods with Lightning Connector, iPhone,<br> Lightning to USB Cable, 5W USB Power Adapter, and Lightning to 3.5 mm Headphone Jack Adapter.
+               Come purchase the limited edition RED iPhone 7 Plus before time runs out!<br> 
+               With this purchase includes EarPods with Lightning Connector, iPhone,<br> 
+               Lightning to USB Cable, 5W USB Power Adapter, and Lightning to 3.5 mm Headphone Jack Adapter.
 
             </p>
             Quantity: <input type= "text" id= "quantity1">
@@ -106,23 +122,21 @@
                 Making it more exciting and enjoyable for those around you. Which includes Beats Pill+ speaker,<br> 
                 1.5m Lightning to USB-A charging cable, 12.5W PSU, Quick Start Guide, and Warranty Card.
             </p>
-            Quantity: <input type = "text" id= "quantity3">
+            Quantity: <input type = "text" id= "quantity3"> <br>
 
             
 
         
-
- 
-
-
-        </div>
-        <div id = "output">
-
-        </div>
         <button onclick = "purchase();">
             Purchase
         
         </button>
+        
+        </div>
+        <div id = "output">
+
+        </div>
+       
     
 
     </body>
